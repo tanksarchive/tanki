@@ -1,0 +1,576 @@
+@font-face {
+  font-family: "NotoSansBold";
+  src: url("../fonts/NotoSansBold.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "NotoSansBold";
+}
+
+*:focus {
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: dotted;
+}
+
+a:hover {
+  color: rgb(188, 255, 9);
+  text-decoration: underline;
+}
+
+li {
+  list-style: none;
+}
+
+input:is([type="text"], [type="password"]) {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 1em 3em 1em 1em;
+  border: 0.0625em solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+input[type="checkbox"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 2.375em;
+  height: 2.375em;
+  appearance: unset;
+  border: 0.063em solid rgba(255, 255, 255, 0.2);
+  margin-left: 1em;
+}
+
+input[type="checkbox"]:checked::before {
+  content: "";
+  background: url("../images/Correct.svg") 50% 50% / 70% 70% no-repeat;
+  width: 2.375em;
+  height: 2.375em;
+  position: relative;
+  display: flex;
+}
+
+input:is([type="checkbox"], [type="date"], [type="datetime-local"], [type="file"], [type="reset"], [type="range"], [type="radio"], [type="color"]) {
+  cursor: pointer;
+}
+
+img,
+svg {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+::-webkit-selection {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+::-o-selection {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+::-ms-selection {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+::selection {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+select {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 0.063em solid rgba(255, 255, 255, 0.2);
+  min-width: 4.375em;
+  height: 1.563em;
+  padding-left: 0.875em;
+  padding-right: 0.875em;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+body::-webkit-scrollbar {
+  width: 0.75em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+body::-o-scrollbar {
+  width: 0.75em;
+}
+
+body::-o-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body::-o-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+body::-moz-scrollbar {
+  width: 0.75em;
+}
+
+body::-moz-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body::-moz-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+body::-ms-scrollbar {
+  width: 0.75em;
+}
+
+body::-ms-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body::-ms-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.Background {
+  background: url("../images/Background.webp") center / cover;
+  width: 100%;
+  height: 100%;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.67) 71%, #0000 100%),
+    radial-gradient(white, #0000 50%);
+  -webkit-mask-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.67) 71%,
+      #0000 100%
+    ),
+    radial-gradient(white, #0000 50%);
+  opacity: 0.4;
+  filter: blur(0.175em);
+  transform: scale(1.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+html,
+body {
+  background-color: rgba(17, 29, 40, 1);
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+  color: white;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 0.0625em solid rgba(125, 157, 186, 0.3);
+  z-index: 3;
+}
+
+.HeaderFixed::before {
+  background-color: rgba(31, 44, 64, 1);
+  box-shadow: 0em 0em 1.25em rgba(31, 43, 64, 1);
+  filter: hue-rotate(90deg);
+  -webkit-filter: hue-rotate(90deg);
+  -ms-filter: hue-rotate(90deg);
+  -o-filter: hue-rotate(90deg);
+  -moz-filter: hue-rotate(90deg);
+  -khtml-filter: hue-rotate(90deg);
+}
+
+.HeaderBody {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 5em;
+  align-items: center;
+}
+
+.Container {
+  max-width: 73.75em;
+  margin: 0 auto;
+}
+
+.HeaderBody nav ul {
+  display: flex;
+  font-size: 1.125em;
+  position: relative;
+  z-index: 3;
+}
+
+.HeaderBody nav ul li {
+  margin: 0em 0em 0em 1.25em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.HeaderLogo {
+  background-color: rgba(255, 0, 0, 0.4);
+  padding: 0.3125em;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+}
+
+.HeaderLogo span {
+  text-transform: uppercase;
+  font-size: 1.3125em;
+}
+
+.HeaderLogo span:nth-child(2) {
+  display: none;
+}
+
+.HeaderMenu {
+  display: flex;
+  position: relative;
+  z-index: 4;
+}
+
+.MobileMenu {
+  display: none;
+}
+
+.AnimatedBackground {
+  background-image: repeating-linear-gradient(
+    #fff0 0em,
+    rgba(0, 0, 120, 0.15) 0.3125em,
+    #fff0 0.625em
+  );
+  animation: scroll 2s infinite linear;
+  -webkit-animation: scroll 2s infinite linear;
+  -o-animation: scroll 2s infinite linear;
+  -ms-animation: scroll 2s infinite linear;
+  -moz-animation: scroll 2s infinite linear;
+  -khtml-animation: scroll 2s infinite linear;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100vh;
+}
+
+@keyframes scroll {
+  from {
+    background-position: 0 -1.25em;
+  }
+  to {
+    background-position: 0;
+  }
+}
+
+main {
+  padding: 10em 0em;
+  width: 100%;
+  z-index: 4;
+  flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  -o-flex: 1 1 auto;
+  -khtml-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  -moz-flex: 1 1 auto;
+}
+
+.Tanki {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.TankiBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.TankiBody h1 {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5em;
+  margin: 0.75em 0em 0.75em 0em;
+  padding: 0em 0em 0em 1.25em;
+}
+
+.TankiBody ul {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.TankiBody li {
+  margin: 1em 0em 1em 0em;
+}
+
+footer {
+  background-color: hsla(0, 7%, 63.3%, 0.09);
+  border-top: 0.0625em solid rgba(106, 139, 156, 0.3);
+  position: relative;
+  z-index: 4;
+  padding: 3.125em 0em;
+}
+
+.Socials {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Socials a {
+  display: flex;
+  justify-content: center;
+  border: 0.0625em solid rgba(255, 255, 255, 0.3);
+  padding: 0.625em 0.625em;
+  margin: 0.6em;
+}
+
+.Socials a:hover {
+  border: 0.0625em solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.Socials img {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+noscript {
+  background-color: rgb(36, 36, 36);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+noscript span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1186px) {
+  .HeaderBody nav ul {
+    margin: 0em 1em 0em 0em;
+  }
+}
+
+@media (max-width: 1194px) {
+  .HeaderLogo {
+    margin: 0em 0em 0em 0.5em;
+  }
+}
+
+@media (max-width: 991px) {
+  .BodyLock {
+    overflow: hidden;
+  }
+
+  header::before {
+    z-index: 5;
+  }
+
+  .MobileMenu {
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+    width: 1.875em;
+    height: 1.25em;
+    z-index: 5;
+    cursor: pointer;
+    margin: 0em 0.9375em 0em 0em;
+  }
+
+  .MobileMenu:hover {
+    opacity: 0.8;
+  }
+
+  .MobileMenu span {
+    background-color: white;
+    width: 100%;
+    height: 0.125em;
+    position: absolute;
+    left: 0;
+    top: 0.5625em;
+    cursor: pointer;
+  }
+
+  .MobileMenu::before,
+  .MobileMenu::after {
+    content: "";
+    background-color: white;
+    position: absolute;
+    height: 0.125em;
+    width: 100%;
+    left: 0;
+  }
+
+  .MobileMenu::before {
+    top: 0;
+  }
+
+  .MobileMenu::after {
+    bottom: 0;
+  }
+
+  .HeaderMenu {
+    background-color: rgba(26, 50, 68, 0.77);
+    position: fixed;
+    overflow: auto;
+    top: -120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 3.75em 0.625em 1.25em 0.625em;
+    display: block;
+  }
+
+  .HeaderLogo {
+    position: relative;
+    z-index: 5;
+  }
+
+  .HeaderBody {
+    height: 3.75em;
+  }
+
+  .HeaderBody nav ul {
+    display: block;
+    margin: unset;
+  }
+
+  .HeaderBody nav ul li {
+    margin: 0;
+  }
+
+  .Langs li {
+    margin: 0em 0em 0em 0em;
+  }
+
+  .active::before {
+    transform: rotate(45deg);
+    top: 0.5625em;
+  }
+
+  .active::after {
+    transform: rotate(-45deg);
+    bottom: 0.5625em;
+  }
+
+  .active span {
+    transform: scale(0);
+  }
+
+  .MenuActive {
+    top: 0;
+  }
+
+  .HeaderMenu a,
+  .HeaderMenu b {
+    width: 100%;
+    display: flex;
+    padding: 1em;
+    font-size: 1em;
+  }
+
+  .HeaderMenu li {
+    border-bottom: 0.0625em solid rgba(255, 255, 255, 0.15);
+  }
+
+  .HeaderMenu li:hover {
+    padding-left: 1em;
+    transition: all 0.5s ease;
+  }
+}
+
+@media (max-width: 300px) {
+  .HeaderLogo span {
+    display: none;
+  }
+
+  .HeaderLogo span:nth-child(2) {
+    display: flex;
+  }
+}
+
+@media (max-width: 271px) {
+  .HeaderLogo {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 203px) {
+  .TankiBody {
+    font-size: 0.9em;
+  }
+
+  .TankiBody h1 {
+    padding: 0.3em;
+    font-size: 1.6em;
+  }
+}
+
+@media (max-width: 184px) {
+  .TankiBody {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 165px) {
+  .TankiBody {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 145px) {
+  .TankiBody {
+    font-size: 0.6em;
+  }
+}
